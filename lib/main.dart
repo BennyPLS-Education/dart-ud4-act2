@@ -10,6 +10,7 @@ void main() async {
   await Preferences.init();
   runApp(MultiProvider(
     providers: [
+      ChangeNotifierProvider(create: (_) => NotesProvider(Preferences.notes)),
       ChangeNotifierProvider(create: (_) => ThemeProvider.bool(Preferences.isDarkMode)),
     ],
     child: const MyApp(),

@@ -3,21 +3,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Preferences {
   static late SharedPreferences _prefs;
 
-  static String _name = '';
   static bool _isDarkMode = false;
-  static int _genere = 1;
+  static List<String> notes = [];
 
   static Future init() async {
     _prefs = await SharedPreferences.getInstance();
-  }
-
-  static String get name {
-    return _prefs.getString('name') ?? _name;
-  }
-
-  static set name(String value) {
-    _name = value;
-    _prefs.setString('name', value);
   }
 
   static bool get isDarkMode {
@@ -29,12 +19,22 @@ class Preferences {
     _prefs.setBool('isDarkMode', value);
   }
 
-  static int get genere {
-    return _prefs.getInt('genere') ?? _genere;
+  static List<String> get notesList {
+    return _prefs.getStringList('notes') ?? notes;
   }
 
-  static set genere(int value) {
-    _genere = value;
-    _prefs.setInt('genere', value);
+  static set notesList(List<String> value) {
+    notes = value;
+    _prefs.setStringList('notes', value);
+  }
+
+  static void addNotes(String value) {
+    notes.add(value);
+    _prefs.setStringList('notes', notes);
+  }
+
+  static void removeNotes(int index) {
+    notes.removeAt(index);
+    _prefs.setStringList('notes', notes);
   }
 }

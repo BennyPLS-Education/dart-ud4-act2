@@ -38,36 +38,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       themeProvider.toggleTheme(value);
                       setState(() {});
                     }),
-                const Divider(),
-                RadioListTile<int>(
-                    value: 1,
-                    groupValue: Preferences.genere,
-                    title: const Text('Masculino'),
-                    onChanged: (value) {
-                      Preferences.genere = value ?? 1;
-                      setState(() {});
-                    }),
-                const Divider(),
-                RadioListTile<int>(
-                    value: 2,
-                    groupValue: Preferences.genere,
-                    title: const Text('Femenino'),
-                    onChanged: (value) {
-                      Preferences.genere = value ?? 1;
-                      setState(() {});
-                    }),
-                const Divider(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: TextFormField(
-                    initialValue: Preferences.name,
-                    onChanged: (value) {
-                      Preferences.name = value;
-                      setState(() {});
-                    },
-                    decoration: const InputDecoration(labelText: 'Nom', helperText: 'Nom de l\'usuari'),
-                  ),
-                )
               ],
             ),
           ),
